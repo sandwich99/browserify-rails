@@ -47,7 +47,7 @@ module BrowserifyRails
 
     # @return [<String>] Paths of files, that this file depends on
     def dependencies
-      @dependencies ||= run_browserify("--list").lines.map(&:strip).select do |path|
+      @dependencies ||= run_browserify("-t browserify-shim --list").lines.map(&:strip).select do |path|
         # Filter the temp file, where browserify caches the input stream
         File.exists?(path)
       end
@@ -92,7 +92,7 @@ module BrowserifyRails
     end
 
     def options
-      options = ["-t browserify-shim"]
+      options = []
 
       options.push("-d") if config.source_map_environments.include?(Rails.env)
 
