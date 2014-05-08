@@ -81,6 +81,7 @@ module BrowserifyRails
     # @return [String] Output on standard out
     def run_browserify(options)
       command = "#{browserify_cmd} #{options}"
+      puts "xxxxxxxxxxxxxxxxxxxxxxxxxx #{command} xxxxxxxxxxxxxxxxxxxxxx"
       directory = File.dirname(file)
       stdout, stderr, status = Open3.capture3(command, stdin_data: data, chdir: directory)
 
