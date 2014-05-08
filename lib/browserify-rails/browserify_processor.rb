@@ -92,7 +92,7 @@ module BrowserifyRails
     end
 
     def options
-      options = []
+      options = ["-t browserify-shim"]
 
       options.push("-d") if config.source_map_environments.include?(Rails.env)
 
